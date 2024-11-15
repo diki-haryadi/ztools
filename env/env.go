@@ -21,13 +21,19 @@ func init() {
 	LoadEnv()
 }
 
-func LoadEnv() {
+func LoadEnv(customEnvPath ...string) {
 	_, callerDir, _, ok := runtime.Caller(0)
 	if !ok {
 		log.Fatal("Error generating env dir")
 	}
 
-	dir := filepath.Join(filepath.Dir(callerDir), "../..", "envs/.env")
+	var dir string
+	if customEnvPath != nil {
+		dir = customEnvPath[0]
+	} else {
+		dir = filepath.Join(filepath.Dir(callerDir), "../..", "envs/.env")
+	}
+
 	err := godotenv.Load(dir)
 	if err != nil {
 		log.Fatal("Error loading .env file")
