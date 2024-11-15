@@ -84,25 +84,30 @@ func NewIC(ctx context.Context) (*IContainer, func(), error) {
 		pg.Close()
 	})
 
-	kwc := &kafkaProducer.WriterConfig{
-		Brokers:      config.BaseConfig.Kafka.ClientBrokers,
-		Topic:        config.BaseConfig.Kafka.Topic,
-		RequiredAcks: kafka.RequireAll,
-	}
-	kw := kafkaProducer.NewKafkaWriter(kwc)
-	downFns = append(downFns, func() {
-		_ = kw.Client.Close()
-	})
+	var kw *kafkaProducer.Writer
+	var kr *kafkaConsumer.Reader
 
-	krc := &kafkaConsumer.ReaderConfig{
-		Brokers: config.BaseConfig.Kafka.ClientBrokers,
-		Topic:   config.BaseConfig.Kafka.Topic,
-		GroupID: config.BaseConfig.Kafka.ClientGroupId,
+	if config.BaseConfig.Kafka.Enabled {
+		kwc := &kafkaProducer.WriterConfig{
+			Brokers:      config.BaseConfig.Kafka.ClientBrokers,
+			Topic:        config.BaseConfig.Kafka.Topic,
+			RequiredAcks: kafka.RequireAll,
+		}
+		kw = kafkaProducer.NewKafkaWriter(kwc)
+		downFns = append(downFns, func() {
+			_ = kw.Client.Close()
+		})
+
+		krc := &kafkaConsumer.ReaderConfig{
+			Brokers: config.BaseConfig.Kafka.ClientBrokers,
+			Topic:   config.BaseConfig.Kafka.Topic,
+			GroupID: config.BaseConfig.Kafka.ClientGroupId,
+		}
+		kr = kafkaConsumer.NewKafkaReader(krc)
+		downFns = append(downFns, func() {
+			_ = kr.Client.Close()
+		})
 	}
-	kr := kafkaConsumer.NewKafkaReader(krc)
-	downFns = append(downFns, func() {
-		_ = kr.Client.Close()
-	})
 
 	ic := &IContainer{
 		Config:         config.BaseConfig,
@@ -110,7 +115,9 @@ func NewIC(ctx context.Context) (*IContainer, func(), error) {
 		Postgres:       pg,
 		GrpcServer:     grpcServer,
 		EchoHttpServer: echoServer,
-		KafkaWriter:    kw, KafkaReader: kr}
+		KafkaWriter:    kw,
+		KafkaReader:    kr,
+	}
 
 	return ic, down, nil
 }
