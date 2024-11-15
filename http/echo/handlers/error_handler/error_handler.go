@@ -8,11 +8,11 @@ import (
 	"github.com/labstack/echo/v4"
 	"go.uber.org/zap"
 
-	loggerConstant "github.com/diki-haryadi/go-micro-template/pkg/constant/logger"
-	customErrors "github.com/diki-haryadi/go-micro-template/pkg/error/custom_error"
-	errorUtils "github.com/diki-haryadi/go-micro-template/pkg/error/error_utils"
-	httpError "github.com/diki-haryadi/go-micro-template/pkg/error/http"
-	"github.com/diki-haryadi/go-micro-template/pkg/logger"
+	loggerConstant "github.com/diki-haryadi/ztools/constant/logger"
+	customErrors "github.com/diki-haryadi/ztools/error/custom_error"
+	errorUtils "github.com/diki-haryadi/ztools/error/error_utils"
+	httpError "github.com/diki-haryadi/ztools/error/http"
+	"github.com/diki-haryadi/ztools/logger"
 )
 
 func ErrorHandler(err error, c echo.Context) {

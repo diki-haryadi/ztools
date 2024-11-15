@@ -1,8 +1,8 @@
 package config
 
 import (
-	"github.com/diki-haryadi/go-micro-template/pkg/constant"
-	"github.com/diki-haryadi/go-micro-template/pkg/env"
+	"github.com/diki-haryadi/ztools/constant"
+	"github.com/diki-haryadi/ztools/env"
 )
 
 type Config struct {

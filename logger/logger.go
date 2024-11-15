@@ -9,7 +9,7 @@ import (
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 
-	"github.com/diki-haryadi/go-micro-template/pkg/config"
+	"github.com/diki-haryadi/ztools/config"
 )
 
 var Zap *zap.Logger

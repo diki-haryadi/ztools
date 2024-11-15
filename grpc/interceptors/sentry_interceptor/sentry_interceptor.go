@@ -7,8 +7,8 @@ import (
 	grpcMiddleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	"google.golang.org/grpc"
 
-	"github.com/diki-haryadi/go-micro-template/pkg/config"
-	sentryUtils "github.com/diki-haryadi/go-micro-template/pkg/sentry/sentry_utils"
+	"github.com/diki-haryadi/ztools/config"
+	sentryUtils "github.com/diki-haryadi/ztools/sentry/sentry_utils"
 )
 
 func UnaryServerInterceptor(opts *sentryUtils.Options) grpc.UnaryServerInterceptor {

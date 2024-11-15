@@ -1,6 +1,6 @@
 package cronJob
 
-import "github.com/diki-haryadi/go-micro-template/pkg/logger"
+import "github.com/diki-haryadi/ztools/logger"
 
 type CronLogger struct{}
 

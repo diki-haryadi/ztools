@@ -7,10 +7,10 @@ import (
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 
-	loggerConstant "github.com/diki-haryadi/go-micro-template/pkg/constant/logger"
-	customError "github.com/diki-haryadi/go-micro-template/pkg/error/custom_error"
-	"github.com/diki-haryadi/go-micro-template/pkg/logger"
-	"github.com/diki-haryadi/go-micro-template/pkg/wrapper"
+	loggerConstant "github.com/diki-haryadi/ztools/constant/logger"
+	customError "github.com/diki-haryadi/ztools/error/custom_error"
+	"github.com/diki-haryadi/ztools/logger"
+	"github.com/diki-haryadi/ztools/wrapper"
 )
 
 var ErrorHandler = func(f wrapper.HandlerFunc) wrapper.HandlerFunc {

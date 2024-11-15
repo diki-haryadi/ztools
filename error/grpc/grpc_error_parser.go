@@ -3,8 +3,8 @@ package grpcError
 import (
 	"google.golang.org/grpc/codes"
 
-	errorList "github.com/diki-haryadi/go-micro-template/pkg/constant/error/error_list"
-	customError "github.com/diki-haryadi/go-micro-template/pkg/error/custom_error"
+	errorList "github.com/diki-haryadi/ztools/constant/error/error_list"
+	customError "github.com/diki-haryadi/ztools/error/custom_error"
 )
 
 func ParseError(err error) GrpcErr {

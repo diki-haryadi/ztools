@@ -3,8 +3,8 @@ package externalBridge
 import (
 	"context"
 
-	"github.com/diki-haryadi/go-micro-template/pkg/config"
-	"github.com/diki-haryadi/go-micro-template/pkg/grpc"
+	"github.com/diki-haryadi/ztools/config"
+	"github.com/diki-haryadi/ztools/grpc"
 )
 
 type ExternalBridge struct {

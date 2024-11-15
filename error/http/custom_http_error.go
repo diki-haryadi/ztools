@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	errorConstant "github.com/diki-haryadi/go-micro-template/pkg/constant/error"
+	errorConstant "github.com/diki-haryadi/ztools/constant/error"
 )
 
 func NewHttpValidationError(code int, message string, details map[string]string) HttpErr {

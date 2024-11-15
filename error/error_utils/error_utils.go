@@ -9,10 +9,10 @@ import (
 	"github.com/pkg/errors"
 	"go.uber.org/zap"
 
-	errorList "github.com/diki-haryadi/go-micro-template/pkg/constant/error/error_list"
-	errorContract "github.com/diki-haryadi/go-micro-template/pkg/error/contracts"
-	customError "github.com/diki-haryadi/go-micro-template/pkg/error/custom_error"
-	"github.com/diki-haryadi/go-micro-template/pkg/logger"
+	errorList "github.com/diki-haryadi/ztools/constant/error/error_list"
+	errorContract "github.com/diki-haryadi/ztools/error/contracts"
+	customError "github.com/diki-haryadi/ztools/error/custom_error"
+	"github.com/diki-haryadi/ztools/logger"
 )
 
 // CheckErrorMessages checks for specific messages contains in the error

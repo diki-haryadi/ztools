@@ -8,10 +8,10 @@ import (
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 
-	loggerConstant "github.com/diki-haryadi/go-micro-template/pkg/constant/logger"
-	errorUtils "github.com/diki-haryadi/go-micro-template/pkg/error/error_utils"
-	grpcErrors "github.com/diki-haryadi/go-micro-template/pkg/error/grpc"
-	"github.com/diki-haryadi/go-micro-template/pkg/logger"
+	loggerConstant "github.com/diki-haryadi/ztools/constant/logger"
+	errorUtils "github.com/diki-haryadi/ztools/error/error_utils"
+	grpcErrors "github.com/diki-haryadi/ztools/error/grpc"
+	"github.com/diki-haryadi/ztools/logger"
 )
 
 // UnaryServerInterceptor returns a problem-detail error to client

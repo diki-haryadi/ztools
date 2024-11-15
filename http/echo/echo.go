@@ -11,11 +11,11 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 	"go.uber.org/zap"
 
-	"github.com/diki-haryadi/go-micro-template/pkg/config"
-	"github.com/diki-haryadi/go-micro-template/pkg/constant"
-	loggerConstant "github.com/diki-haryadi/go-micro-template/pkg/constant/logger"
-	echoErrorHandler "github.com/diki-haryadi/go-micro-template/pkg/http/echo/handlers/error_handler"
-	"github.com/diki-haryadi/go-micro-template/pkg/logger"
+	"github.com/diki-haryadi/ztools/config"
+	"github.com/diki-haryadi/ztools/constant"
+	loggerConstant "github.com/diki-haryadi/ztools/constant/logger"
+	echoErrorHandler "github.com/diki-haryadi/ztools/http/echo/handlers/error_handler"
+	"github.com/diki-haryadi/ztools/logger"
 )
 
 type ServerConfig struct {

@@ -11,11 +11,11 @@ import (
 	googleGrpc "google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
-	grpcErrorInterceptor "github.com/diki-haryadi/go-micro-template/pkg/grpc/interceptors/error_interceptor"
-	grpcLoggerInterceptor "github.com/diki-haryadi/go-micro-template/pkg/grpc/interceptors/logger_interceptor"
-	grpcSentryInterceptor "github.com/diki-haryadi/go-micro-template/pkg/grpc/interceptors/sentry_interceptor"
-	"github.com/diki-haryadi/go-micro-template/pkg/logger"
-	sentryUtils "github.com/diki-haryadi/go-micro-template/pkg/sentry/sentry_utils"
+	grpcErrorInterceptor "github.com/diki-haryadi/ztools/grpc/interceptors/error_interceptor"
+	grpcLoggerInterceptor "github.com/diki-haryadi/ztools/grpc/interceptors/logger_interceptor"
+	grpcSentryInterceptor "github.com/diki-haryadi/ztools/grpc/interceptors/sentry_interceptor"
+	"github.com/diki-haryadi/ztools/logger"
+	sentryUtils "github.com/diki-haryadi/ztools/sentry/sentry_utils"
 )
 
 type Server interface {

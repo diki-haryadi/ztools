@@ -5,7 +5,7 @@ import (
 
 	"google.golang.org/grpc/codes"
 
-	errorConstant "github.com/diki-haryadi/go-micro-template/pkg/constant/error"
+	errorConstant "github.com/diki-haryadi/ztools/constant/error"
 )
 
 func NewGrpcValidationError(code int, message string, details map[string]string) GrpcErr {

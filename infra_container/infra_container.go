@@ -10,13 +10,13 @@ import (
 	"github.com/segmentio/kafka-go"
 	"go.uber.org/zap"
 
-	"github.com/diki-haryadi/go-micro-template/pkg/config"
-	"github.com/diki-haryadi/go-micro-template/pkg/grpc"
-	echoHttp "github.com/diki-haryadi/go-micro-template/pkg/http/echo"
-	kafkaConsumer "github.com/diki-haryadi/go-micro-template/pkg/kafka/consumer"
-	kafkaProducer "github.com/diki-haryadi/go-micro-template/pkg/kafka/producer"
-	"github.com/diki-haryadi/go-micro-template/pkg/logger"
-	"github.com/diki-haryadi/go-micro-template/pkg/postgres"
+	"github.com/diki-haryadi/ztools/config"
+	"github.com/diki-haryadi/ztools/grpc"
+	echoHttp "github.com/diki-haryadi/ztools/http/echo"
+	kafkaConsumer "github.com/diki-haryadi/ztools/kafka/consumer"
+	kafkaProducer "github.com/diki-haryadi/ztools/kafka/producer"
+	"github.com/diki-haryadi/ztools/logger"
+	"github.com/diki-haryadi/ztools/postgres"
 )
 
 type IContainer struct {

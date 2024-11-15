@@ -5,9 +5,9 @@ import (
 
 	"github.com/getsentry/sentry-go"
 
-	"github.com/diki-haryadi/go-micro-template/pkg/config"
-	sentryUtils "github.com/diki-haryadi/go-micro-template/pkg/sentry/sentry_utils"
-	"github.com/diki-haryadi/go-micro-template/pkg/wrapper"
+	"github.com/diki-haryadi/ztools/config"
+	sentryUtils "github.com/diki-haryadi/ztools/sentry/sentry_utils"
+	"github.com/diki-haryadi/ztools/wrapper"
 )
 
 var SentryHandler = func(f wrapper.HandlerFunc) wrapper.HandlerFunc {

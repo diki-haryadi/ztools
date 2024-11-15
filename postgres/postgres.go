@@ -8,7 +8,7 @@ import (
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
 
-	"github.com/diki-haryadi/go-micro-template/pkg/config"
+	"github.com/diki-haryadi/ztools/config"
 )
 
 type Config struct {

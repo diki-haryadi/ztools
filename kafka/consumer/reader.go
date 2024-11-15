@@ -3,7 +3,7 @@ package kafkaConsumer
 import (
 	"github.com/segmentio/kafka-go"
 
-	"github.com/diki-haryadi/go-micro-template/pkg/logger"
+	"github.com/diki-haryadi/ztools/logger"
 )
 
 type Reader struct {
