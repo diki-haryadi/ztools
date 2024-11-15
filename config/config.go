@@ -61,7 +61,7 @@ func init() {
 }
 
 func NewConfig() *Config {
-	return &Config{
+	config := &Config{
 		App: AppConfig{
 			AppEnv:  env.New("APP_ENV", constant.AppEnvDev).AsString(),
 			AppName: env.New("APP_NAME", constant.AppName).AsString(),
@@ -101,6 +101,8 @@ func NewConfig() *Config {
 			Dsn: env.New("SENTRY_DSN", nil).AsString(),
 		},
 	}
+	BaseConfig = config
+	return config
 }
 
 func IsDevEnv() bool {
