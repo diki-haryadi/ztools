@@ -3,11 +3,8 @@ package infraContainer
 import (
 	"context"
 	"fmt"
-	"log"
 	"time"
 
-	"github.com/getsentry/sentry-go"
-	"github.com/segmentio/kafka-go"
 	"go.uber.org/zap"
 
 	"github.com/diki-haryadi/ztools/config"
@@ -43,7 +40,7 @@ func NewIC(ctx context.Context) (*IContainer, func(), error) {
 		EnableTracing:    config.IsDevEnv(),
 	})
 	if se != nil {
-		log.Fatalf("can not initialize sentry with error:  %s", se)
+		_ = fmt.Errorf("can not initialize sentry with error:  %s", se)
 	}
 	downFns = append(downFns, func() {
 		sentry.Flush(2 * time.Second)
