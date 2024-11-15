@@ -18,7 +18,7 @@ type EVar struct {
 }
 
 func init() {
-	LoadEnv()
+	//LoadEnv()
 }
 
 func LoadEnv(customEnvPath ...string) {
