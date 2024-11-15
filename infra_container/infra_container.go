@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"time"
 
+	sentry "github.com/getsentry/sentry-go"
+	kafka "github.com/segmentio/kafka-go"
 	"go.uber.org/zap"
 
 	"github.com/diki-haryadi/ztools/config"
