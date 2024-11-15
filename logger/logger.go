@@ -79,5 +79,8 @@ func NewLogger(customEnvPath ...string) *zap.Logger {
 	}
 
 	core := zapcore.NewCore(encoder, logWriter, zap.NewAtomicLevelAt(zapcore.DebugLevel))
-	return zap.New(core, zap.AddCaller())
+
+	zapNew := zap.New(core, zap.AddCaller())
+	Zap = zapNew
+	return zapNew
 }
