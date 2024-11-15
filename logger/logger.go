@@ -15,10 +15,10 @@ import (
 var Zap *zap.Logger
 
 func init() {
-	Zap = newLogger()
+	//Zap = NewLogger()
 }
 
-func newLogger() *zap.Logger {
+func NewLogger(customEnvPath ...string) *zap.Logger {
 	var logWriter zapcore.WriteSyncer
 	var encoderCfg zapcore.EncoderConfig
 	var encoder zapcore.Encoder
@@ -43,7 +43,13 @@ func newLogger() *zap.Logger {
 			log.Fatal("Error getting caller directory")
 		}
 
-		tmpLogDir := filepath.Join(filepath.Dir(callerDir), "../..", "tmp/logs")
+		var tmpLogDir string
+		if customEnvPath != nil {
+			tmpLogDir = customEnvPath[0]
+		} else {
+			tmpLogDir = filepath.Join(filepath.Dir(callerDir), "../..", "tmp/logs")
+		}
+
 		if _, err := os.Stat(tmpLogDir); os.IsNotExist(err) {
 			_ = os.MkdirAll(tmpLogDir, os.ModePerm)
 		}

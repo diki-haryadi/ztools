@@ -57,10 +57,10 @@ type SentryConfig struct {
 }
 
 func init() {
-	BaseConfig = newConfig()
+	//BaseConfig = newConfig()
 }
 
-func newConfig() *Config {
+func NewConfig() *Config {
 	return &Config{
 		App: AppConfig{
 			AppEnv:  env.New("APP_ENV", constant.AppEnvDev).AsString(),
