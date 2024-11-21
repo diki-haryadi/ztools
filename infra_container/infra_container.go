@@ -46,7 +46,7 @@ func (ic *IContainer) ICDown() *IContainer {
 }
 
 func (ic *IContainer) ICPostgres() *IContainer {
-	pg, err := postgres.NewConnection(context.Background(), &postgres.Config{
+	pg, err := postgres.NewConnection(ic.Context, &postgres.Config{
 		Host:    config.BaseConfig.Postgres.Host,
 		Port:    config.BaseConfig.Postgres.Port,
 		User:    config.BaseConfig.Postgres.User,
@@ -86,7 +86,7 @@ func (ic *IContainer) ICEcho() *IContainer {
 	ic.EchoHttpServer = echoHttp.NewServer(echoServerConfig)
 	ic.EchoHttpServer.SetupDefaultMiddlewares()
 	ic.DownFns = append(ic.DownFns, func() {
-		_ = ic.EchoHttpServer.GracefulShutdown(context.Background())
+		_ = ic.EchoHttpServer.GracefulShutdown(ic.Context)
 	})
 	return ic
 }
