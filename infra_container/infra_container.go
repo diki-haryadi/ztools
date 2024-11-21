@@ -33,7 +33,9 @@ type IContainer struct {
 
 func (ic *IContainer) IContext(ctx context.Context) *IContainer {
 	ic.Context = ctx
+	return ic
 }
+
 func (ic *IContainer) ICDown() *IContainer {
 	var downFns []func()
 	down := func() {
