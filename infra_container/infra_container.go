@@ -28,8 +28,12 @@ type IContainer struct {
 	KafkaReader    *kafkaConsumer.Reader
 	DownFns        []func()
 	Down           func()
+	Context        context.Context
 }
 
+func (ic *IContainer) IContext(ctx context.Context) *IContainer {
+	ic.Context = ctx
+}
 func (ic *IContainer) ICDown() *IContainer {
 	var downFns []func()
 	down := func() {
@@ -41,8 +45,8 @@ func (ic *IContainer) ICDown() *IContainer {
 	return ic
 }
 
-func (ic *IContainer) ICPostgres(ctx context.Context) *IContainer {
-	pg, err := postgres.NewConnection(ctx, &postgres.Config{
+func (ic *IContainer) ICPostgres() *IContainer {
+	pg, err := postgres.NewConnection(context.Background(), &postgres.Config{
 		Host:    config.BaseConfig.Postgres.Host,
 		Port:    config.BaseConfig.Postgres.Port,
 		User:    config.BaseConfig.Postgres.User,
@@ -60,7 +64,7 @@ func (ic *IContainer) ICPostgres(ctx context.Context) *IContainer {
 	return ic
 }
 
-func (ic *IContainer) ICGrpc(ctx context.Context) *IContainer {
+func (ic *IContainer) ICGrpc() *IContainer {
 	grpcServerConfig := &grpc.Config{
 		Port:        config.BaseConfig.Grpc.Port,
 		Host:        config.BaseConfig.Grpc.Host,
@@ -73,7 +77,7 @@ func (ic *IContainer) ICGrpc(ctx context.Context) *IContainer {
 	return ic
 }
 
-func (ic *IContainer) ICEcho(ctx context.Context) *IContainer {
+func (ic *IContainer) ICEcho() *IContainer {
 	echoServerConfig := &echoHttp.ServerConfig{
 		Port:     config.BaseConfig.Http.Port,
 		BasePath: "/api/v1",
@@ -82,12 +86,12 @@ func (ic *IContainer) ICEcho(ctx context.Context) *IContainer {
 	ic.EchoHttpServer = echoHttp.NewServer(echoServerConfig)
 	ic.EchoHttpServer.SetupDefaultMiddlewares()
 	ic.DownFns = append(ic.DownFns, func() {
-		_ = ic.EchoHttpServer.GracefulShutdown(ctx)
+		_ = ic.EchoHttpServer.GracefulShutdown(context.Background())
 	})
 	return ic
 }
 
-func (ic *IContainer) ICKafka(ctx context.Context) *IContainer {
+func (ic *IContainer) ICKafka() *IContainer {
 	var kw *kafkaProducer.Writer
 	var kr *kafkaConsumer.Reader
 
@@ -113,7 +117,7 @@ func (ic *IContainer) ICKafka(ctx context.Context) *IContainer {
 	return ic
 }
 
-func (ic *IContainer) NewIC(ctx context.Context) (*IContainer, func(), error) {
+func (ic *IContainer) NewIC() (*IContainer, func(), error) {
 	//var downFns []func()
 	//down := func() {
 	//	for _, df := range downFns {
